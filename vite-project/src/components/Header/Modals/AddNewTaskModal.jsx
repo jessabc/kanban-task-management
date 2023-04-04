@@ -81,9 +81,9 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible}) {
 
       
     return (
-        <div onClick={setIsNewTaskModalVisible} className=' h-screen absolute top-0 left-0 right-0 bottom-0'>
+        <div onClick={setIsNewTaskModalVisible} className=' h-screen absolute top-0 left-0 right-0 bottom-0 bg-violet-600'>
 
-        <div className='bg-blue-500 p-5 absolute top-10 left-0 right-0 bottom-0 mx-auto w-1/2 h-1/2' onClick={e => e.stopPropagation()}>
+        <div className='bg-blue-500 p-5  absolute top-10 left-0 right-0 bottom-0 mx-auto w-1/2 h-1/2 ' onClick={e => e.stopPropagation()}>
 
             <button onClick={setIsNewTaskModalVisible}>x</button>
 

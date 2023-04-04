@@ -127,7 +127,7 @@ export default function Main() {
 
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="flex gap-5">
+        <div className="flex gap-5 bg-violet-100 ">
             {columnElements} 
         </div>
       </DragDropContext>

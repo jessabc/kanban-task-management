@@ -2,7 +2,7 @@ import logoMobile from '../../assets/logo-mobile.svg'
 import iconVerticalEllipsis from '../../assets/icon-vertical-ellipsis.svg'
 import AddNewTaskModal from './Modals/AddNewTaskModal'
 import { useToggle } from '../../hooks/useToggle'
-import MenuDropdown from './MenuDropdown'
+import MenuDropdown from './Modals/MenuDropdown'
 import { Context } from '../../Context'
 import { useContext } from 'react'
 import EditOrDeleteBoardModal from './Modals/EditOrDeleteBoardModal'
@@ -18,19 +18,28 @@ export default function Header({}) {
     
    
     return (
-        <div className='flex'>
+        <div className='flex  items-end  my-5 mx-5 '>
 
             {/* logo */}
-            <div>
-               <img src={logoMobile} alt="" /> 
-            </div>
             
-            <MenuDropdown boards={boards} />
+               <img src={logoMobile} alt="" className='mr-3'/> 
+          
+            
+                <div className='flex flex-col mt-auto'>
+                    <MenuDropdown boards={boards} />
+                </div>
+                
+            
 
             {/* add new task */}
-            <div>
+            <div className='ml-auto mr-3'>
                 {/*button for add new task modal */}
-                <button onClick={setIsNewTaskModalVisible}className='bg-yellow-500'>+</button>
+
+                <button onClick={setIsNewTaskModalVisible} className='bg-indigo-600  font-bold text-indigo-50 rounded-full text-xl px-3 cursor-pointer'>+</button>
+            
+           
+        
+                
 
                 {/* add new task modal */}
                 <div className={`${isNewTaskModalVisible ? "block" : "hidden"}`}>
@@ -39,9 +48,9 @@ export default function Header({}) {
             </div>
  
             {/* edit or delete board */}
-            <div>
+            <div className='flex flex-col'>
                 {/* button for edit or delete board */}
-               <button onClick={setIsEditDeletBoardModalVisible}>
+               <button onClick={setIsEditDeletBoardModalVisible} className='mt-auto'>
                     <img src={iconVerticalEllipsis} alt=""  className='cursor-pointer'/>
                 </button>
 

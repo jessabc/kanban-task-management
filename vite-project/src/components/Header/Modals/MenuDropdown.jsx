@@ -24,50 +24,25 @@ export default function MenuDropdown() {
   useOnClickOutside(ref, () => setIsMenuModalVisible(false));
 
   const [hideOverflow] = useHiddenOverflow()
-    const [isCreateNewBoardModalVisible, setisCreateNewBoardModalVisible] = useToggle()
+
+    const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
 
     const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
 
     const boardLinks = boards?.map(board => <BoardLink key={board.id} board={board}  setIsMenuModalVisible={setIsMenuModalVisible}/>)
-
-    useEffect(() => {
-        hideOverflow(isMenuModalVisible)
-// credit to https://stackoverflow.com/questions/53932232/how-to-prevent-body-scrolling-while-modal-is-open
-        // if(isMenuModalVisible) {
-        //     document.body.style.overflow = "hidden"; // ADD THIS LINE
-        //   document.body.style.height = "100%"
-        // } else if(!isMenuModalVisible) {
-        //     document.body.style.overflow = "auto"; // ADD THIS LINE
-        //     document.body.style.height = "auto";  // 
-        // }
-
-        // credit to https://usehooks.com/useOnClickOutside/
-        // const checkIfClickedOutside = e => {
-            
-        //     // If the menu is open and the clicked target is not within the menu,
-        //     // then close the menu
-        //     if (isMenuModalVisible && ref.current && !ref.current.contains(e.target)) {
-        
-        //         setIsMenuModalVisible(false)
-        //     } 
-        //   }
-        //   document.addEventListener("mousedown", checkIfClickedOutside)
-        //   return () => {
-        //     // Cleanup the event listener
-        //     document.removeEventListener("mousedown", checkIfClickedOutside)
-        //   }
-          
-      }, [isMenuModalVisible])
+ 
+    // useEffect(() => {
+    //     hideOverflow(isMenuModalVisible)  
+    // }, [isMenuModalVisible])
 
     // light/dark theme
     // credit to https://www.youtube.com/watch?v=VylXkPy-MIc
     useEffect(() => {
-  
-    if(theme === 'dark') {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
+        if(theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
     },[theme])
 
     function handleThemeSwitch() {
@@ -75,17 +50,13 @@ export default function MenuDropdown() {
     }
 
     function handleClick() {
-        setisCreateNewBoardModalVisible(true)
-        setIsMenuModalVisible(false)
+        setIsCreateNewBoardModalVisible(true)
+        // setIsMenuModalVisible(false)
     }
-   
-   
-
-    
 
     return (
         <div >
-      
+
             {/* menu */}
             <div className='' >
 
@@ -93,12 +64,13 @@ export default function MenuDropdown() {
                     onClick={() => setIsMenuModalVisible(prev => !prev)} className='flex gap-1  cursor-pointer  '>
 
                     {/* current board name on display */}
-                    <p className='font-semibold text-lg -mb-1' >{currentBoardName}</p>
+                    <p className='font-semibold text-xl -mb-1' >{currentBoardName}</p>
 
                     {/* chevron */}
-                    <div className='mt-auto pb-1'>
+                    <div 
+                    className={`${isMenuModalVisible ? " ml-1 mt-auto mb-auto " : " mt-auto ml-1"} `}>
                         <div>
-                            <img src={iconChevronDown} alt="" className={`${isMenuModalVisible ? "hidden" : "block"} `}/> 
+                            <img src={iconChevronDown} alt="" className={`${isMenuModalVisible ? "hidden " : "block "} `}/> 
                         </div>
                         <div>
                             <img src={iconChevronUp} alt="" className={`${isMenuModalVisible ? "block" : "hidden"}`}/> 
@@ -107,28 +79,28 @@ export default function MenuDropdown() {
                 </div>
                 
                 {/* over lay credit to https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up */}
-                <div className={`${isMenuModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-slate-400  flex items-start justify-center overflow-hidden' : ''}`}>
+                <div className={`${isMenuModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
                 
                 
                 {/* menu dropdown modal*/}
-                <div className={`${isMenuModalVisible ? "mt-20  w-3/4 h-1/2 bg-indigo-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg overflow-hidden font-semibold text-indigo-600" : "hidden"}` }  ref={ref} >
+                <div className={`${isMenuModalVisible ? "mt-20  w-3/4 h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg font-semibold text-gray-400 overflow-y-auto" : "hidden"}` }  ref={ref} >
 
                     {/* nubmer of boards */}
-                    <p className='pl-5'>{`ALL BOARDS (${boards?.length})`}</p>
+                    <p className='pl-5 text-xs tracking-widest mb-4'>{`ALL BOARDS (${boards?.length})`}</p>
 
                     {/* board links */}
                     {boardLinks}
 
                     {/* create new board link */}
-                    <div className='flex'>
-                        <img src={iconBoard} alt="" className='w-6 mr-2 ml-5 '/>
-                        <button onClick={handleClick} className='hover:text-indigo-300'>+Create New Board</button>
+                    <div className='flex items-center'>
+                        <img src={iconBoard} alt="" className='w-4 h-4 mr-2 ml-5 '/>
+                        <button onClick={handleClick} className='hover:text-gray-300 text-indigo-500'>+Create New Board</button>
                     </div>
 
                     {/* darkmode switch */}
                     {/*credit to https://www.w3schools.com/howto/howto_css_switch.asp */ }
-                    <div className='flex bg-indigo-100 mt-2 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2'>
+                    <div className='flex bg-gray-100 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2'>
                         <img src={iconDarkTheme} alt="" className='h-4'/>
                             
                         {/* <!-- Rounded switch --> */}
@@ -146,9 +118,14 @@ export default function MenuDropdown() {
                 </div>
                 </div>
 
+            
+
             {/* create new board modal */}
             <div className={`${isCreateNewBoardModalVisible ? "block" : "hidden"}`}>
-                <CreateNewBoardModal setisCreateNewBoardModalVisible={setisCreateNewBoardModalVisible}/>
+                <CreateNewBoardModal setIsCreateNewBoardModalVisible={setIsCreateNewBoardModalVisible}
+                isCreateNewBoardModalVisible=
+                {isCreateNewBoardModalVisible}
+                setIsMenuModalVisible={setIsMenuModalVisible}/>
             </div>
           
         </div>

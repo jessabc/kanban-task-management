@@ -1,14 +1,25 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { useForm, useFieldArray } from "react-hook-form";
 import {Context} from '../../../Context'
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
 // credit to https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js
-
-export default function CreateNewBoardModal({setisCreateNewBoardModalVisible}) {
+ 
+export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible, setIsMenuModalVisible}) {
 
     const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+
+    const [hideOverflow] = useHiddenOverflow()
+
+    const ref = useRef()
+    // Call hook passing in the ref and a function to call on outside click
+  useOnClickOutside(ref, () => {setIsCreateNewBoardModalVisible(false)
+
+});
     
     const {
         register,
@@ -23,7 +34,7 @@ export default function CreateNewBoardModal({setisCreateNewBoardModalVisible}) {
         },
         mode: "onChange"
     })
-    const {
+    const { 
         fields,
         append,
         remove,
@@ -56,29 +67,53 @@ export default function CreateNewBoardModal({setisCreateNewBoardModalVisible}) {
             [...prev, data]
         ))
 
-        setisCreateNewBoardModalVisible(false)
+        setIsCreateNewBoardModalVisible(false)
     }
 
+    useEffect(() => {
+   
+        hideOverflow(isCreateNewBoardModalVisible) 
+
+       if(!isCreateNewBoardModalVisible) {
+         setIsMenuModalVisible(false) 
+       }
+               
+
+        
+    }, [isCreateNewBoardModalVisible])
+
     return (
-        <div className="bg-purple-500 absolute top-0 left-0 right-0 bottom-0 mx-auto m-5">
-            <button onClick={setisCreateNewBoardModalVisible}>x</button>
 
-            <p>add new board</p>
+        
+    //    overlay
+        <div className={`${isCreateNewBoardModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="name">name</label>
-                <input id='name' {...register("name")} />
+{/* mt-20  w-3/4 h-1/2 bg-indigo-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg overflow-hidden font-semibold text-indigo-600" : "hidden" */}
 
-                <p>columns</p>
+        <div className={`${isCreateNewBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  `  }  ref={ref}>
+
+            <button onClick={()=>setIsCreateNewBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
+
+            <div className=" m-5">
+
+           
+
+            <p className="font-semibold text-lg text-gray-900 mb-5">Add New Board</p>
+
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
+                <label htmlFor="name">Name</label>
+                <input id='name' {...register("name")} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 mb-2'/>
+
+                <p>Columns</p>
                 <ul>
                     {fields.map((item, index) => {
                     return (
-                        <li key={item.id}>
+                        <li key={item.id} className="flex items-start">
                             <input
                                 {...register(`columns.${index}.name`, { required: true })}
-                            />
-                            <button type="button" onClick={() => remove(index)}>
-                                Delete
+                                className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'/>
+                            <button type="button" onClick={() => remove(index)} className='text-2xl px-1  ml-auto font-semibold cursor-pointer text-gray-500'>
+                                x
                             </button>
                         </li>
                     )})}
@@ -89,13 +124,16 @@ export default function CreateNewBoardModal({setisCreateNewBoardModalVisible}) {
                     onClick={() => {
                         append({id:'', name: '', tasks:[]});
                     }}
+                    className='text-indigo-500 bg-gray-200 rounded-full py-2 my-2 mt-3'
                 >
-                    add new column
+                    + Add New Column
                 </button>
 
-                <input type="submit" />
+                <input type="submit" value='Create New Board' className='text-gray-50 bg-indigo-500 hover:bg-indigo-400 rounded-full py-2 my-2 cursor-pointer' />
 
             </form>
+            </div>
+        </div>
         </div>
     )
 }

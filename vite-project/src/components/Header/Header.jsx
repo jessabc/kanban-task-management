@@ -4,21 +4,22 @@ import AddNewTaskModal from './Modals/AddNewTaskModal'
 import { useToggle } from '../../hooks/useToggle'
 import MenuDropdown from './Modals/MenuDropdown'
 import { Context } from '../../Context'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import EditOrDeleteBoardModal from './Modals/EditOrDeleteBoardModal'
 
 
 export default function Header({}) {
 
-    const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useToggle()
+    const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useState()
 
-    const [isEditDeletBoardModalVisible, setIsEditDeletBoardModalVisible] = useToggle()
+    const [isEditDeletBoardModalVisible, setIsEditDeletBoardModalVisible] = useState()
 
     const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
     
    
     return (
-        <div className='flex  items-end  my-5 mx-5 '>
+        <div className='flex  items-end  my-8 mx-10
+        6 '>
 
             {/* logo */}
             
@@ -32,10 +33,10 @@ export default function Header({}) {
             
 
             {/* add new task */}
-            <div className='ml-auto mr-3'>
+            <div className='ml-auto  mr-3  '>
                 {/*button for add new task modal */}
 
-                <button onClick={setIsNewTaskModalVisible} className='bg-indigo-600  font-bold text-indigo-50 rounded-full text-xl px-3 cursor-pointer'>+</button>
+                <button onClick={() => setIsNewTaskModalVisible(true)} className='bg-indigo-500  font-bold text-indigo-50 rounded-full text-xl  w-12 cursor-pointer pb-1 hover:bg-indigo-400'>+</button>
             
            
         
@@ -43,20 +44,23 @@ export default function Header({}) {
 
                 {/* add new task modal */}
                 <div className={`${isNewTaskModalVisible ? "block" : "hidden"}`}>
-                    <AddNewTaskModal boards={boards} currentBoardName={currentBoardName} setIsNewTaskModalVisible={setIsNewTaskModalVisible}/>
+                    <AddNewTaskModal boards={boards} currentBoardName={currentBoardName} 
+                    isNewTaskModalVisible={isNewTaskModalVisible}
+                    setIsNewTaskModalVisible={setIsNewTaskModalVisible}/>
                 </div>
             </div>
  
             {/* edit or delete board */}
             <div className='flex flex-col'>
                 {/* button for edit or delete board */}
-               <button onClick={setIsEditDeletBoardModalVisible} className='mt-auto'>
+               <button onClick={setIsEditDeletBoardModalVisible} className='mt-auto hover:bg-indigo-100 hover:p-2  hover:rounded-full p-2 cursor-pointer'>
                     <img src={iconVerticalEllipsis} alt=""  className='cursor-pointer'/>
                 </button>
 
                 {/* add/delete board modal*/}
                 <div>
-                    <EditOrDeleteBoardModal isEditDeletBoardModalVisible={isEditDeletBoardModalVisible} setIsEditDeletBoardModalVisible={setIsEditDeletBoardModalVisible}/>
+                    <EditOrDeleteBoardModal isEditDeletBoardModalVisible={isEditDeletBoardModalVisible} setIsEditDeletBoardModalVisible={setIsEditDeletBoardModalVisible}
+                />
                 </div> 
             </div>
             

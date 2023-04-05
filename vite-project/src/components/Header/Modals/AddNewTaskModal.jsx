@@ -3,19 +3,31 @@ import { useEffect, useState, useContext, useRef } from "react"
 import {Context} from '../../../Context'
 import { v4 as uuidv4 } from 'uuid';
 import { useStatusOptions } from "../../../hooks/useStatusOptions";
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
 // credit to https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js
 
 
-export default function AddNewTaskModal({setIsNewTaskModalVisible}) {
+export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModalVisible}) {
   
     const [newTask, setNewTask] = useState({})
     
     const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
 
     const [statusOptionElements] = useStatusOptions()
+
+    const ref = useRef()
+    // Call hook passing in the ref and a function to call on outside click
+  useOnClickOutside(ref, () => setIsNewTaskModalVisible(false));
+
+  const [hideOverflow] = useHiddenOverflow()
+
+  useEffect(() => {
+    hideOverflow(isNewTaskModalVisible)  
+}, [isNewTaskModalVisible])
    
     const {
         register,
@@ -79,40 +91,45 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible}) {
       setIsNewTaskModalVisible(false)
     }, [newTask])
 
-      
+       
     return (
-        <div onClick={setIsNewTaskModalVisible} className=' h-screen absolute top-0 left-0 right-0 bottom-0 bg-violet-600'>
+// overlay
+      <div className={`${isNewTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
-        <div className='bg-blue-500 p-5  absolute top-10 left-0 right-0 bottom-0 mx-auto w-1/2 h-1/2 ' onClick={e => e.stopPropagation()}>
+        {/* <div onClick={setIsNewTaskModalVisible} className=' '> */}
 
-            <button onClick={setIsNewTaskModalVisible}>x</button>
+        <div className={`${isNewTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
 
-            <p>Add new task</p>
+            <button onClick={() => setIsNewTaskModalVisible(false)} className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+<div className=" m-5">
+
+            <p className="font-semibold text-lg text-gray-900 mb-5">Add new task</p>
+
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
                
               {/* title */}
-              <label htmlFor="title">title</label>
-              <input id='title' placeholder='title'{...register('title')} />
+              <label htmlFor="title">Title</label>
+              <input id='title' {...register('title')} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 mb-2'/>
                 
               {/* description */}
-              <label htmlFor="description">description</label>
-              <input id='description' placeholder='description' {...register('description')} />
+              <label htmlFor="description">Description</label>
+              <input id='description'  {...register('description')} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 mb-2'/>
 
               {/* subtasks */}
-              <label htmlFor="subtasks">subtasks</label>
+              <label htmlFor="subtasks">Subtasks</label>
 
               <div>
                 <ul>
                   {fields.map((item, index) => {
                     return (
-                      <li key={item.id}>
+                      <li key={item.id} className="flex items-start">
                         <input
-                          {...register(`subtasks.${index}.title` , { required: true }, `subtasks.${index}.isCompleted:false`)}
+                          {...register(`subtasks.${index}.title` , { required: true }, `subtasks.${index}.isCompleted:false`)}  className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'
                         />
                 
-                        <button type="button" onClick={() => remove(index)}>
-                          Delete
+                        <button type="button" onClick={() => remove(index)} className='text-2xl px-1  ml-auto font-semibold cursor-pointer text-gray-500'>
+                          x
                         </button>
                       </li>
                     )
@@ -124,23 +141,28 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible}) {
                     type="button"
                     onClick={() => {
                       append({title:'', isCompleted: false });
-                    }}
+                    }}  className='text-indigo-500 bg-gray-200 rounded-full py-2 my-2 mt-3 w-full font-semibold'
                   >
-                    add new subtask
+                    + Add New Subtask
                   </button>
                 </section>
           
               </div>
 
               {/* status */}
-              <p >status</p>
-              <select id="status" {...register('status')}  >
+              <section className="my-2 flex flex-col ">
+                <p >Status</p>
+              <select id="status" {...register('status')} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1  pl-2 outline-none focus:border-indigo-500 mb-2' >
                 {statusOptionElements}
               </select>
+              </section>
+              
 
-              <input type="submit" />
+              <input type="submit" value='Create Task' className='text-gray-50 bg-indigo-500 hover:bg-indigo-400 rounded-full py-2 my-2 cursor-pointer' />
             </form>
+            </div>
         </div>
         </div>
+      
     )
 }

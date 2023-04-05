@@ -16,7 +16,7 @@ export default function Main() {
     setColumns(currentBoardData?.columns)
   },[currentBoardData])
 
-  const columnElements = currentBoardData?.columns?.map(column => <Column key={column.name} column={column}/>)
+  const columnElements = currentBoardData?.columns?.map((column, index) => <Column key={column.name} column={column} index={index}/>)
 
   //credit to https://dev.to/imjoshellis/codealong-multi-column-drag-and-drop-in-react-3781
   const onDragEnd = ({ source, destination }) => {
@@ -112,7 +112,6 @@ export default function Main() {
       const updatedBoard = {...currentBoardData, columns: updatedColumns}
       
       setCurrentBoardData(updatedBoard)
-      console.log(updatedBoard)
 
       setBoards(prev => (
         prev.map(board => (
@@ -125,9 +124,12 @@ export default function Main() {
   }
 
 
+const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 1}`
+
+
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="flex gap-5 bg-violet-100 ">
+        <div className={`grid ${numOfCols} gap-5 bg-indigo-50 p-10 `}>
             {columnElements} 
         </div>
       </DragDropContext>

@@ -19,8 +19,8 @@ export default function BoardLink({board, setIsMenuModalVisible}) {
    },[currentBoardName])
    
     return (
-        <div className={`${currentBoardName === board.name ? 'bg-indigo-600 text-indigo-200 rounded-tr-lg rounded-br-lg w-3/4 pl-5 hover:bg-indigo-600 hover:text-indigo-200 hover:rounded-tr-lg hover:rounded-br-lg hover:w-3/4 hover:pl-5' : ''} flex gap-2 my-3 py-1 cursor-pointer hover:text-indigo-200 hover:bg-indigo-400  hover:rounded-tr-lg hover:rounded-br-lg hover:w-3/4 `} onClick={handleClick}>
-            <img src={iconBoard} alt="" className={`w-6 ml-5 ${currentBoardName === board.name ? "ml-0": " "}`}/>
+        <div className={`${currentBoardName === board.name ? 'bg-indigo-500 text-gray-50 rounded-tr-full rounded-br-full w-11/12  hover:bg-indigo-500 hover:text-gray-50 hover:rounded-tr-full hover:rounded-br-full py-3 hover:w-11/12 ' : 'hover:text-gray-50 hover:bg-indigo-400  hover:rounded-tr-full py-3 my-1 hover:rounded-br-full hover:w-11/12 '} flex items-center gap-2  py-1 cursor-pointer `} onClick={handleClick}>
+            <img src={iconBoard} alt="" className={`w-4 h-4 ml-5 ${currentBoardName === board.name ? "ml-0  ": " "} `}/>
             <p className="">{board.name}</p>
         </div>
     )

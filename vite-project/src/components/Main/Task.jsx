@@ -1,11 +1,11 @@
-import { useToggle } from '../../hooks/useToggle'
 import TaskModal from './Modals/TaskModal'
 import { Draggable } from 'react-beautiful-dnd'
+import { useState } from 'react'
 
 export function Task({task, index}) {
 
-    const [isTaskModalVisible, setIsTaskModalVisible] = useToggle()
-
+    const [isTaskModalVisible, setIsTaskModalVisible] = useState(false)
+    // console.log('task',isTaskModalVisible)
     const numCompletedSubtasks = getNumCompletedSubtasks()
 
     function getNumCompletedSubtasks() {
@@ -26,7 +26,7 @@ export function Task({task, index}) {
             
             {/* Task Card */}
               <div 
-                onClick={setIsTaskModalVisible} 
+                onClick={() => setIsTaskModalVisible(true) } 
                 className="cursor-pointer da rk:bg-zinc-500 flex flex-col my-1 bg-indigo-50 shadow-md p-3 h-40">
                   <p className='text-gray-900 font-semibold py-2 '>{task.title}</p>
                   <p className='text-gray-400 font-semibold text-xs py-2'>{`${numCompletedSubtasks} of ${task.subtasks.length} subtasks`}</p>

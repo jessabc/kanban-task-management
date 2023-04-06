@@ -13,7 +13,7 @@ import iconLightTheme from '../../../assets/icon-light-theme.svg'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
 
-export default function MenuDropdown() {
+export default function MenuDropdown() { 
     
     const [theme, setTheme] = useState('light')
 
@@ -51,7 +51,7 @@ export default function MenuDropdown() {
 
     function handleClick() {
         setIsCreateNewBoardModalVisible(true)
-        // setIsMenuModalVisible(false)
+        setIsMenuModalVisible(false)
     }
 
     return (

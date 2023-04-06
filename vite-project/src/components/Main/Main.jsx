@@ -3,7 +3,7 @@ import { Context } from '../../Context'
 import Column from './Column'
 import "./styles.css";
 import { DragDropContext } from 'react-beautiful-dnd'
-
+import EmptyColumn from "./EmptyColumn";
 
 export default function Main() {
     
@@ -131,6 +131,7 @@ const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 1}`
       <DragDropContext onDragEnd={onDragEnd}>
         <div className={`grid ${numOfCols} gap-5 bg-indigo-50 p-10 `}>
             {columnElements} 
+            <EmptyColumn/>
         </div>
       </DragDropContext>
   )

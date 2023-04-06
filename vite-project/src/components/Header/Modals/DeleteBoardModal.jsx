@@ -22,7 +22,7 @@ export default function DeleteBoardModal({isDeleteBoardModalVisible, setIsDelete
         setBoards(prev => prev.filter(board => board.name != currentBoardName)) 
         
         // closes modal
-        setisDeleteBoardModalVisible(false)
+        setIsDeleteBoardModalVisible(false)
     }
 
     

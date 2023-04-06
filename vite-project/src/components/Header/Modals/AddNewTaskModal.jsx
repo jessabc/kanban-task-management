@@ -133,7 +133,7 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
                         </button>
                       </li>
                     )
-                  })}
+                  })} 
                 </ul>
 
                 <section>

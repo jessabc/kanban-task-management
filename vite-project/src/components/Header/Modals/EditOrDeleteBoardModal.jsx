@@ -7,7 +7,7 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
 
 export default function EditOrDeleteBoardModal({isEditDeletBoardModalVisible, setIsEditDeletBoardModalVisible}) {
-
+ 
     const [isEditBoardModalVisible, setIsEditBoardModalVisible] = useState()
 
     const [isDeleteBoardModalVisible, setIsDeleteBoardModalVisible] = useState()
@@ -19,7 +19,7 @@ export default function EditOrDeleteBoardModal({isEditDeletBoardModalVisible, se
   useOnClickOutside(ref, () => setIsEditDeletBoardModalVisible(false));
 
     const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
-
+ 
     function handleClick(e) {
         if(e.target.id === 'editBoard') {
             setIsEditBoardModalVisible(true)

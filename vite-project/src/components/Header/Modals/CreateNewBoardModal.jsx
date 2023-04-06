@@ -3,8 +3,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import {Context} from '../../../Context'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-
-
+ 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
 // credit to https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js
@@ -74,9 +73,9 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
    
         hideOverflow(isCreateNewBoardModalVisible) 
 
-       if(!isCreateNewBoardModalVisible) {
-         setIsMenuModalVisible(false) 
-       }
+    //    if(!isCreateNewBoardModalVisible) {
+    //      setIsMenuModalVisible(false) 
+    //    }
                
 
         

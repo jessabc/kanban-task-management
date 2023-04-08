@@ -10,6 +10,8 @@ export function ContextProvider({children}) {
   //credit to https://upmostly.com/tutorials/how-to-add-local-storage-to-your-react-apps  
   const [boards, setBoards] = useState(JSON.parse(localStorage.getItem('boards'))) 
 
+  const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
+
   const [currentBoardName, setCurrentBoardName] = useState('')
   // console.log(currentBoardName)
   
@@ -51,7 +53,7 @@ export function ContextProvider({children}) {
   }, [])
 
   return (
-      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData}}>
+      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData, isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible}}>
         {children}
       </Context.Provider>
   )

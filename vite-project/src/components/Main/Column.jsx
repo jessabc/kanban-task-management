@@ -21,12 +21,25 @@ export default function Column({column, index}) {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <div className="flex items-center gap-2 mb-5 ">
+              <div className="flex items-center gap-2 mb-5 w-60 pt-10">
                 <div className={`${circle()} h-4 w-4 rounded-full `}></div>
                 <p className="uppercase text-gray-500 font-semibold tracking-wider text-sm">{column.name} ({column.tasks.length})</p>
+
+              
+
+              </div>
+
+              {column.tasks.length === 0 && 
+              <div className="rounded-lg  h-screen w-60 border-4 border-dashed border-gray-300 ">
+           
+        
+            
+                </div>}
+              
+              <div className=''>
+                {taskElements}
               </div>
               
-              {taskElements}
               {provided.placeholder}
             </div>
           )}

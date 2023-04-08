@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useStatusOptions } from "../../../hooks/useStatusOptions";
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import iconCross from '../../../assets/icon-cross.svg'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -93,20 +94,29 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
 
        
     return (
-// overlay
+// overlay 
       <div className={`${isNewTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
         {/* <div onClick={setIsNewTaskModalVisible} className=' '> */}
 
         <div className={`${isNewTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
 
-            <button onClick={() => setIsNewTaskModalVisible(false)} className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
+            {/* <button onClick={() => setIsNewTaskModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button> */}
 
-<div className=" m-5">
+  <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
+{/* <div className="m-5"> */}
+     <button type="reset" onClick={() => setIsNewTaskModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'> <img src={iconCross} alt="" /></button>
+
+     <div className="m-10 flex flex-col">
+
+{/* <div className=" "> */}
 
             <p className="font-semibold text-lg text-gray-900 mb-5">Add new task</p>
 
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
+              
+{/* <div className=" m-5">   */}
+
+
                
               {/* title */}
               <label htmlFor="title">Title</label>
@@ -123,13 +133,13 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
                 <ul>
                   {fields.map((item, index) => {
                     return (
-                      <li key={item.id} className="flex items-start">
+                      <li key={item.id} className="flex items-center">
                         <input
                           {...register(`subtasks.${index}.title` , { required: true }, `subtasks.${index}.isCompleted:false`)}  className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'
                         />
                 
-                        <button type="button" onClick={() => remove(index)} className='text-2xl px-1  ml-auto font-semibold cursor-pointer text-gray-500'>
-                          x
+                        <button type="button" onClick={() => remove(index)} className='  cursor-pointer '>
+                        <img src={iconCross} alt="" />
                         </button>
                       </li>
                     )
@@ -159,10 +169,11 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
               
 
               <input type="submit" value='Create Task' className='text-gray-50 bg-indigo-500 hover:bg-indigo-400 rounded-full py-2 my-2 cursor-pointer' />
+              </div>
             </form>
-            </div>
+            
         </div>
         </div>
-      
+        
     )
 }

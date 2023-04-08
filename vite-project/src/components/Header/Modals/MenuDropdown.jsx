@@ -12,12 +12,13 @@ import iconDarkTheme from '../../../assets/icon-dark-theme.svg'
 import iconLightTheme from '../../../assets/icon-light-theme.svg'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import useWindowSize from '../../../hooks/useWindowSize'
+import { useThemeSwitch } from '../../../hooks/useThemeSwitch'
 
-export default function MenuDropdown() { 
+export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}) { 
     
-    const [theme, setTheme] = useState('light')
 
-    const [isMenuModalVisible, setIsMenuModalVisible] = useState(false)
+   const [theme, setTheme, handleThemeSwitch] = useThemeSwitch()
 
     const ref = useRef()
     // Call hook passing in the ref and a function to call on outside click
@@ -25,9 +26,11 @@ export default function MenuDropdown() {
 
   const [hideOverflow] = useHiddenOverflow()
 
-    const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
+    // const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
 
-    const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+    const size = useWindowSize();
+
+    const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData, isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible} = useContext(Context)
 
     const boardLinks = boards?.map(board => <BoardLink key={board.id} board={board}  setIsMenuModalVisible={setIsMenuModalVisible}/>)
  
@@ -35,19 +38,7 @@ export default function MenuDropdown() {
     //     hideOverflow(isMenuModalVisible)  
     // }, [isMenuModalVisible])
 
-    // light/dark theme
-    // credit to https://www.youtube.com/watch?v=VylXkPy-MIc
-    useEffect(() => {
-        if(theme === 'dark') {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    },[theme])
-
-    function handleThemeSwitch() {
-        setTheme(theme === 'dark'? 'light' : 'dark')
-    }
+    
 
     function handleClick() {
         setIsCreateNewBoardModalVisible(true)
@@ -60,31 +51,15 @@ export default function MenuDropdown() {
             {/* menu */}
             <div className='' >
 
-                <div 
-                    onClick={() => setIsMenuModalVisible(prev => !prev)} className='flex gap-1  cursor-pointer  '>
-
-                    {/* current board name on display */}
-                    <p className='font-semibold text-xl -mb-1' >{currentBoardName}</p>
-
-                    {/* chevron */}
-                    <div 
-                    className={`${isMenuModalVisible ? " ml-1 mt-auto mb-auto " : " mt-auto ml-1"} `}>
-                        <div>
-                            <img src={iconChevronDown} alt="" className={`${isMenuModalVisible ? "hidden " : "block "} `}/> 
-                        </div>
-                        <div>
-                            <img src={iconChevronUp} alt="" className={`${isMenuModalVisible ? "block" : "hidden"}`}/> 
-                        </div>  
-                    </div>
-                </div>
                 
+
                 {/* over lay credit to https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up */}
                 <div className={`${isMenuModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
                 
                 
                 {/* menu dropdown modal*/}
-                <div className={`${isMenuModalVisible ? "mt-20  w-3/4 h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg font-semibold text-gray-400 overflow-y-auto" : "hidden"}` }  ref={ref} >
+                <div className={`${isMenuModalVisible ? "mt-20  w-3/4 h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg font-semibold text-gray-400 overflow-y-auto" : "hidden"} ` }  ref={ref} >
 
                     {/* nubmer of boards */}
                     <p className='pl-5 text-xs tracking-widest mb-4'>{`ALL BOARDS (${boards?.length})`}</p>

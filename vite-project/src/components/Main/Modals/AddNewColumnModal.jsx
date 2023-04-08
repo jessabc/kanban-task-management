@@ -10,7 +10,7 @@ import iconCross from '../../../assets/icon-cross.svg'
 // credit to https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js
 
 
-export default function EditBoardModal({isEditDeletBoardModalVisible, setIsEditBoardModalVisible, isEditBoardModalVisible}) {
+export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddNewColumnModalVisible, }) {
 
 
     let {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
@@ -19,14 +19,14 @@ export default function EditBoardModal({isEditDeletBoardModalVisible, setIsEditB
 
       const ref = useRef()
     // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => setIsEditBoardModalVisible(false));
+  useOnClickOutside(ref, () => setIsAddNewColumnModalVisible(false));
 
-    const [hideOverflow] = useHiddenOverflow()
+//     const [hideOverflow] = useHiddenOverflow()
 
 
-  useEffect(() => {
-    hideOverflow(isEditBoardModalVisible)  
-}, [isEditBoardModalVisible])
+//   useEffect(() => {
+//     hideOverflow(isAddNewColumnModalVisible)  
+// }, [isAddNewColumnModalVisible])
 
 
     const {
@@ -36,6 +36,7 @@ export default function EditBoardModal({isEditDeletBoardModalVisible, setIsEditB
         formState: { errors }
     } = useForm({
         defaultValues: {
+        name: currentBoardName,
         columns: columnsArray
         },
         mode: "onChange"
@@ -65,27 +66,27 @@ export default function EditBoardModal({isEditDeletBoardModalVisible, setIsEditB
         setCurrentBoardName(updatedBoardData.name)
         
         // close modal
-        setIsEditBoardModalVisible(false)
+        setIsAddNewColumnModalVisible(false)
     }
 
 
     return (
 
-        <div className={`${isEditBoardModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
+        <div className={`${isAddNewColumnModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
 
-<div className={`${isEditBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
+<div className={`${isAddNewColumnModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
             
             {/* <button onClick={setIsEditBoardModalVisible}>x</button> */}
 
-            <button onClick={() => setIsEditBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
+            <button onClick={() => setIsAddNewColumnModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
             
             <div className=" m-5">
-            <p className="font-semibold text-lg text-gray-900 mb-5">Edit Board</p>
+            <p className="font-semibold text-lg text-gray-900 mb-5">Add New Column</p>
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
            
-                <label htmlFor="name">Name</label>
-                <input defaultValue={currentBoardName} {...register("name")} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 mb-2'/>
+                <label htmlFor="name" >Name</label>
+                <input defaultValue={currentBoardName} {...register("name")} className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 mb-2' disabled/>
             
                 <p>Columns</p>
                 <ul>
@@ -119,3 +120,4 @@ export default function EditBoardModal({isEditDeletBoardModalVisible, setIsEditB
         </div>
     )
 }
+

@@ -5,6 +5,7 @@ import { useDeleteTask } from '../../../hooks/useDeleteTask';
 import { useEditTask} from '../../../hooks/useEditTask'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import iconCross from '../../../assets/icon-cross.svg'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -106,7 +107,7 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
 
         <div className={`${isEditTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  } ref={ref}  >
             
-            <button onClick={handleClick } className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
+            <button onClick={handleClick } className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
 
             <div className=" m-5">
 
@@ -126,14 +127,14 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
                 <ul>
                     {fields.map((item, index) => {
                     return (
-                        <li key={item.id} className="flex items-start">
+                        <li key={item.id} className="flex items-center">
                             <input
                                 {...register(`subtasks.${index}.title`, { required: true })}
                                 className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'
                             />
-                            <button type="button" onClick={() => remove(index)} className='text-2xl px-1  ml-auto font-semibold cursor-pointer text-gray-500'>
-                                x
-                            </button>
+                            <button type="button" onClick={() => remove(index)} className='  cursor-pointer '>
+                        <img src={iconCross} alt="" />
+                        </button>
                         </li>
                     )})}
                 </ul>

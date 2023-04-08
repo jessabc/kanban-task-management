@@ -3,6 +3,7 @@ import {Context} from '../../../Context'
 import { useDeleteTask } from '../../../hooks/useDeleteTask'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import iconCross from '../../../assets/icon-cross.svg'
 
 export default function DeleteTaskModal({isDeleteTaskModalVisible, setIsDeleteTaskModalVisible, setIsTaskModalVisible, task}) {
 
@@ -47,7 +48,7 @@ const [hideOverflow] = useHiddenOverflow()
 
         <div className={`${isDeleteTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
             
-            <button type='button' id='exit' onClick={(e) => handleClick(e)} className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
+            <button type='button' id='exit' onClick={(e) => handleClick(e)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
 
             <div className=" m-5">
 

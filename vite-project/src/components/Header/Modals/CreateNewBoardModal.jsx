@@ -3,7 +3,9 @@ import { useForm, useFieldArray } from "react-hook-form";
 import {Context} from '../../../Context'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
- 
+ import iconCross from '../../../assets/icon-cross.svg'
+
+
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
 // credit to https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js
@@ -91,7 +93,7 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
 
         <div className={`${isCreateNewBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  `  }  ref={ref}>
 
-            <button onClick={()=>setIsCreateNewBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1'>x</button>
+            <button onClick={()=>setIsCreateNewBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
 
             <div className=" m-5">
 
@@ -107,13 +109,13 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
                 <ul>
                     {fields.map((item, index) => {
                     return (
-                        <li key={item.id} className="flex items-start">
+                        <li key={item.id} className="flex items-center">
                             <input
                                 {...register(`columns.${index}.name`, { required: true })}
                                 className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'/>
-                            <button type="button" onClick={() => remove(index)} className='text-2xl px-1  ml-auto font-semibold cursor-pointer text-gray-500'>
-                                x
-                            </button>
+                            <button type="button" onClick={() => remove(index)} className='  cursor-pointer '>
+                        <img src={iconCross} alt="" />
+                        </button>
                         </li>
                     )})}
                 </ul>

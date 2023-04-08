@@ -9,6 +9,7 @@ import { useEditTask} from '../../../hooks/useEditTask'
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
 import EditTaskModal from "./EditTaskModal";
+import iconCross from '../../../assets/icon-cross.svg'
  
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -111,7 +112,13 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col ' >
               
-              <input type="reset" onClick={handleClick} value='x' className='ml-auto text-2xl bg-gray-200 px-2 rounded-md mt-1 mr-1 cursor-pointer'/>
+              {/* <div className=' relative ml-auto'>
+                <input type="reset" onClick={handleClick} value='x' className='   rounded-md bg-gray-300 cursor-pointer mr-1 mt-1 pb-1 px-2  text-3xl text-gray-300 z-10'/>
+              <img src={iconCross} alt="" className="absolute top-4 right-3"/> 
+              </div> */}
+
+              <button type="reset" onClick={handleClick} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'> <img src={iconCross} alt="" /></button>
+              
          
          <div className="m-10">
 

@@ -7,7 +7,7 @@ import { ContextProvider } from './Context'
 function App() {
   
   return (
-    <div>
+    <div className='flex flex-col h-screen '>
       <ContextProvider>
         <Header />
         <Main />

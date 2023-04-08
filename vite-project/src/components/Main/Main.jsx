@@ -3,7 +3,9 @@ import { Context } from '../../Context'
 import Column from './Column'
 import "./styles.css";
 import { DragDropContext } from 'react-beautiful-dnd'
-import EmptyColumn from "./EmptyColumn";
+import NewColumn from "./NewColumn";
+import Menu from "./Menu";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export default function Main() {
     
@@ -17,6 +19,9 @@ export default function Main() {
   },[currentBoardData])
 
   const columnElements = currentBoardData?.columns?.map((column, index) => <Column key={column.name} column={column} index={index}/>)
+
+
+  const size = useWindowSize();
 
   //credit to https://dev.to/imjoshellis/codealong-multi-column-drag-and-drop-in-react-3781
   const onDragEnd = ({ source, destination }) => {
@@ -124,14 +129,18 @@ export default function Main() {
   }
 
 
-const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 1}`
-
+// const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 1}`
+// grid ${numOfCols}
 
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className={`grid ${numOfCols} gap-5 bg-indigo-50 p-10 `}>
+        <div className={` flex gap-5  w-full pl-10 pr-10 flex-1 overflow-y-auto bg-gray-100 sm:pl-0 `}>
+        
+             {size.width > 640 && <Menu/>}
+        
+         
             {columnElements} 
-            <EmptyColumn/>
+            <NewColumn/>
         </div>
       </DragDropContext>
   )

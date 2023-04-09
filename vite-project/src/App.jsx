@@ -2,15 +2,19 @@ import './App.css'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import { ContextProvider } from './Context'
-
+import { useState } from 'react'
 
 function App() {
+
+  const [isMenuModalVisible, setIsMenuModalVisible] = useState(false)
   
   return (
-    <div className='flex flex-col h-screen '>
+    <div className='  flex flex-col h-screen '>
       <ContextProvider>
-        <Header />
-        <Main />
+        <Header isMenuModalVisible={isMenuModalVisible}
+                    setIsMenuModalVisible={setIsMenuModalVisible}/>
+        <Main isMenuModalVisible={isMenuModalVisible}
+                    setIsMenuModalVisible={setIsMenuModalVisible}/>
       </ContextProvider>  
     </div>
   )

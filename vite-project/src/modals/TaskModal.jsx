@@ -1,15 +1,16 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import React, { useEffect, useState, useContext, useRef } from "react"
-import { Context } from '../../../Context'
+import { Context } from '../Context'
 import EditOrDeleteTaskModal from "./EditOrDeleteTaskModal" 
-import { useStatusOptions } from "../../../hooks/useStatusOptions";
-import iconVerticalEllipsis from '../../../assets/icon-vertical-ellipsis.svg'
-import { useDeleteTask } from "../../../hooks/useDeleteTask";
-import { useEditTask} from '../../../hooks/useEditTask'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import { useStatusOptions } from "../hooks/useStatusOptions";
+import iconVerticalEllipsis from '../assets/icon-vertical-ellipsis.svg'
+import { useDeleteTask } from "../hooks/useDeleteTask";
+import { useEditTask} from '../hooks/useEditTask'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
 import EditTaskModal from "./EditTaskModal";
-import iconCross from '../../../assets/icon-cross.svg'
+import iconCross from '../assets/icon-cross.svg'
+import iconCheck from '../assets/icon-check.svg'
  
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -89,7 +90,8 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
   const handleChange = (e) => {
  
   e.target.nextSibling.classList.toggle('line-through')
-  
+
+
     setCount(prev => (
       e.target.checked ? prev + 1 : prev - 1
     ))
@@ -156,14 +158,19 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
                     return (
                         <li key={subtask.title} className="flex items-center my-3 bg-gray-200 py-2 rounded-lg pl-2">
                           <input
+                                  style={{ backgroundImage: `url(${iconCheck })` }}
+
                             {...register( `subtasks.${subtask.title}`)}
                             type='checkbox'
                             defaultChecked={subtask.isCompleted}
                             // id={subtask.title}
                             onChange={(e) => handleChange(e, subtask)}
-                            className={`accent-indigo-500 `}
+                            className={`appearance-none  border border-slate-400  h-5 w-5  bg-no-repeat bg-center rounded-sm 
+                            bg-white
+                             checked:bg-indigo-500 `}
                           
                           />
+                          
                           <label htmlFor={subtask.title}
                           id={subtask.title}
                           className={`text-gray-900 font-semibold text-xs ml-3 ${subtask.isCompleted ? "line-through" : ""}`}

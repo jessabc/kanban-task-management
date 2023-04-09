@@ -1,8 +1,8 @@
-import {Context} from '../Context'
-import { useState, useContext, useEffect } from "react"
+import { Context } from '../Context'
+import { useContext } from "react"
 
 
-export function useEditTask({task, updatedTaskData}) {
+export function useEditTask() {
     
     let {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
 
@@ -15,10 +15,8 @@ export function useEditTask({task, updatedTaskData}) {
           //if task has NOT changed status/ moved columns, then update that column/status tasks array with updated task   
           if(task.status === updatedTaskData?.status) {
            
-         
             updatedTaskArray = (currentBoardData.columns.find(column => column.name === updatedTaskData.status)).tasks.map(task => task.id === updatedTaskData.id ? updatedTaskData : task)
           
-
           //if task HAS changed status/ moved columns, then update that column/status tasks array with updated task 
           } else if(task.status != updatedTaskData?.status) {
             updatedTaskArray = (currentBoardData.columns.find(column => column.name === updatedTaskData?.status))?.tasks

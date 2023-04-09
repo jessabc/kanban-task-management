@@ -32,7 +32,7 @@ export function useGetMenuContent() {
 {/* darkmode switch */}
 {/*credit to https://www.w3schools.com/howto/howto_css_switch.asp */ }
 <div className='flex bg-gray-100 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2'>
-    <img src={iconDarkTheme} alt="" className='h-4'/>
+    <img src={ iconLightTheme} alt="" className='h-4'/>
         
     {/* <!-- Rounded switch --> */}
     <div className=''>
@@ -42,7 +42,7 @@ export function useGetMenuContent() {
         </label>
     </div>
 
-    <img src={iconLightTheme
+    <img src={iconDarkTheme
 } alt="" className='h-4' />
 </div>
             

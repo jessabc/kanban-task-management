@@ -1,11 +1,11 @@
-import {Context} from '../../../Context'
+import {Context} from '../Context'
 import { useState, useContext, useEffect, useRef } from "react"
 import { useForm, useFieldArray } from "react-hook-form";
-import { useDeleteTask } from '../../../hooks/useDeleteTask';
-import { useEditTask} from '../../../hooks/useEditTask'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import { useDeleteTask } from '../hooks/useDeleteTask';
+import { useEditTask} from '../hooks/useEditTask'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/

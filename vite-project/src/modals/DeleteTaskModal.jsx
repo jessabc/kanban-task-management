@@ -1,9 +1,9 @@
 import { useContext, useRef, useEffect } from 'react'
-import {Context} from '../../../Context'
-import { useDeleteTask } from '../../../hooks/useDeleteTask'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import {Context} from '../Context'
+import { useDeleteTask } from '../hooks/useDeleteTask'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
 
 export default function DeleteTaskModal({isDeleteTaskModalVisible, setIsDeleteTaskModalVisible, setIsTaskModalVisible, task}) {
 

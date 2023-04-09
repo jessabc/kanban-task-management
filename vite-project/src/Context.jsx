@@ -7,16 +7,17 @@ export const Context = createContext()
 export function ContextProvider({children}) {
 
   //credit to https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
+
   //credit to https://upmostly.com/tutorials/how-to-add-local-storage-to-your-react-apps  
+
   const [boards, setBoards] = useState(JSON.parse(localStorage.getItem('boards'))) 
 
-  const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
-
   const [currentBoardName, setCurrentBoardName] = useState('')
-  // console.log(currentBoardName)
   
   const [currentBoardData, setCurrentBoardData] = useState({})
-  // console.log(currentBoardData)
+
+ 
+
   //local storage
   // useEffect(() => {
   //   if(boards) {
@@ -52,8 +53,13 @@ export function ContextProvider({children}) {
     }
   }, [])
 
+  
+
+
+
+
   return (
-      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData, isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible}}>
+      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData}}>
         {children}
       </Context.Provider>
   )

@@ -1,11 +1,11 @@
-import { useToggle } from '../../../hooks/useToggle'
+import { useToggle } from '../hooks/useToggle'
 import DeleteTaskModal from './DeleteTaskModal'
 import EditTaskModal from './EditTaskModal'
-import { Context } from '../../../Context'
+import { Context } from '../Context'
 import { useRef, useState, useEffect } from 'react'
 import { useContext } from 'react'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
 
 export default function EditOrDeleteTaskModal({task, isEditDeleteTaskModalVisible, setIsEditDeleteTaskModalVisible, setIsTaskModalVisible, isTaskModalVisible, setIsEditTaskModalVisible, isEditTaskModalVisible}) {
    

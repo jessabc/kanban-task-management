@@ -1,10 +1,10 @@
-import {useToggle} from '../../../hooks/useToggle'
+import {useToggle} from '../hooks/useToggle'
 import DeleteBoardModal from './DeleteBoardModal' 
 import EditBoardModal from './EditBoardModal'
-import {Context} from '../../../Context'
+import {Context} from '../Context'
 import { useContext, useRef, useEffect, useState } from 'react'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
 
 export default function EditOrDeleteBoardModal({isEditDeletBoardModalVisible, setIsEditDeletBoardModalVisible}) {
  

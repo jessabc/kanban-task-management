@@ -21,7 +21,7 @@ export default function Column({column, index}) {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <div className="flex items-center gap-2 mb-5 w-60 pt-10">
+              <div className="flex items-center gap-2 mb-5 w-60 pt-10 ">
                 <div className={`${circle()} h-4 w-4 rounded-full `}></div>
                 <p className="uppercase text-gray-500 font-semibold tracking-wider text-sm">{column.name} ({column.tasks.length})</p>
 

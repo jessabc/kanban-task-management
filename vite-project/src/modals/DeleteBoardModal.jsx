@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef } from 'react'
-import {Context} from '../../../Context'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import {Context} from '../Context'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
 
 export default function DeleteBoardModal({isDeleteBoardModalVisible, setIsDeleteBoardModalVisible}) {
 

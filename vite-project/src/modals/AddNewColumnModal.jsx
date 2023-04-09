@@ -1,9 +1,9 @@
-import {Context} from '../../../Context'
+import {Context} from '../Context'
 import { useContext, useRef, useEffect } from "react"
 import { useForm, useFieldArray } from "react-hook-form";
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -72,13 +72,13 @@ export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddN
 
     return (
 
-        <div className={`${isAddNewColumnModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
+        <div className={`${isAddNewColumnModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600   flex items-start justify-center ' : ''}`}>
 
 <div className={`${isAddNewColumnModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
             
             {/* <button onClick={setIsEditBoardModalVisible}>x</button> */}
 
-            <button onClick={() => setIsAddNewColumnModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
+            <button onClick={() => setIsAddNewColumnModalVisible(false)} className='ml-auto text-2xl bg-gray-200   p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
             
             <div className=" m-5">
             <p className="font-semibold text-lg text-gray-900 mb-5">Add New Column</p>

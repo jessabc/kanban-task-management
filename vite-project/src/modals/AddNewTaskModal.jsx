@@ -1,11 +1,12 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { useEffect, useState, useContext, useRef } from "react"
-import {Context} from '../../../Context'
+import {Context} from '../Context'
 import { v4 as uuidv4 } from 'uuid';
-import { useStatusOptions } from "../../../hooks/useStatusOptions";
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import { useStatusOptions } from "../hooks/useStatusOptions";
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
+import useWindowSize from '../hooks/useWindowSize'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -25,6 +26,16 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
   useOnClickOutside(ref, () => setIsNewTaskModalVisible(false));
 
   const [hideOverflow] = useHiddenOverflow()
+
+  const size = useWindowSize()
+
+  useEffect(() => {
+    if(size.width > 640) {
+          setIsNewTaskModalVisible(false)
+
+    }
+
+  }, [size.width])
 
   useEffect(() => {
     hideOverflow(isNewTaskModalVisible)  

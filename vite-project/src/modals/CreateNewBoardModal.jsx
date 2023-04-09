@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef } from "react"
 import { useForm, useFieldArray } from "react-hook-form";
-import {Context} from '../../../Context'
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
- import iconCross from '../../../assets/icon-cross.svg'
+import {Context} from '../Context'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+ import iconCross from '../assets/icon-cross.svg'
 
 
 // react hook form
@@ -87,11 +87,11 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
 
         
     //    overlay
-        <div className={`${isCreateNewBoardModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
+        <div className={`${isCreateNewBoardModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50' : ''}`}>
 
 {/* mt-20  w-3/4 h-1/2 bg-indigo-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg overflow-hidden font-semibold text-indigo-600" : "hidden" */}
 
-        <div className={`${isCreateNewBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  `  }  ref={ref}>
+        <div className={`${isCreateNewBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col dark:bg-zinc-700  `  }  ref={ref}>
 
             <button onClick={()=>setIsCreateNewBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
 
@@ -99,7 +99,7 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
 
            
 
-            <p className="font-semibold text-lg text-gray-900 mb-5">Add New Board</p>
+            <p className="font-semibold text-lg text-gray-900 mb-5 dark:text-zinc-100">Add New Board</p>
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
                 <label htmlFor="name">Name</label>

@@ -1,9 +1,9 @@
-import {Context} from '../../../Context'
+import {Context} from '../Context'
 import { useContext, useRef, useEffect } from "react"
 import { useForm, useFieldArray } from "react-hook-form";
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
-import { useHiddenOverflow } from '../../../hooks/useHiddenOverflow'
-import iconCross from '../../../assets/icon-cross.svg'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
+import iconCross from '../assets/icon-cross.svg'
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/

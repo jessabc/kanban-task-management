@@ -6,7 +6,7 @@ import { useStatusOptions } from "../hooks/useStatusOptions";
 import { useOnClickOutside } from '../hooks/useOnClickOutside'
 import { useHiddenOverflow } from '../hooks/useHiddenOverflow'
 import iconCross from '../assets/icon-cross.svg'
-import useWindowSize from '../hooks/useWindowSize'
+import useWindowSize from '../hooks/useWindowSize'  
 
 // react hook form
 // credit to https://react-hook-form.com/api/usefieldarray/
@@ -106,11 +106,11 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
        
     return (
 // overlay 
-      <div className={`${isNewTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
+      <div className={`${isNewTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50' : ''}`}>
 
         {/* <div onClick={setIsNewTaskModalVisible} className=' '> */}
 
-        <div className={`${isNewTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
+        <div className={`${isNewTaskModalVisible ? "  w-3/4 sm:w-1/2  h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto dark:bg-zinc-700`  }  ref={ref}>
 
             {/* <button onClick={() => setIsNewTaskModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button> */}
 
@@ -122,7 +122,7 @@ export default function AddNewTaskModal({setIsNewTaskModalVisible, isNewTaskModa
 
 {/* <div className=" "> */}
 
-            <p className="font-semibold text-lg text-gray-900 mb-5">Add new task</p>
+            <p className="font-semibold text-lg text-gray-900 mb-5 dark:text-zinc-100">Add new task</p>
 
               
 {/* <div className=" m-5">   */}

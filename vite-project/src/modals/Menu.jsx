@@ -18,8 +18,8 @@ import iconHideSidbar from '../assets/icon-hide-sidebar.svg'
 import iconShowSidbar from '../assets/icon-show-sidebar.svg'
 import logoDark from '../assets/logo-dark.svg' 
 
-export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}) { 
-     console.log(isMenuModalVisible)
+export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) { 
+    //  console.log(isMenuModalVisible)
 
     const [isCreateNewBoardModalVisible, setIsCreateNewBoardModalVisible] = useState()
 //    const [theme, setTheme, handleThemeSwitch] = useThemeSwitch()
@@ -42,7 +42,7 @@ export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}
 
    
 
-    const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+    const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData, theme, setTheme} = useContext(Context)
 
     const boardLinks = boards?.map(board => <BoardLink key={board.id} board={board}  setIsMenuModalVisible={setIsMenuModalVisible}/>)
  
@@ -64,7 +64,7 @@ export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}
     }
 
     // theme switch
-  const [theme, setTheme] = useState('light')
+//   const [theme, setTheme] = useState('light')
 
   // light/dark theme
   // credit to https://www.youtube.com/watch?v=VylXkPy-MIc
@@ -90,12 +90,16 @@ export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}
               <div className={`${isMenuModalVisible && size.width < 640? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 flex bg-gray-600  dark:bg-gray-900 dark:bg-opacity-50  items-start justify-center ' : ''}`}>
                 
                     {/* menu dropdown modal*/}
-                    <div className={`${isMenuModalVisible ? "mt-20  w-3/4  fixed h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg  font-semibold text-gray-400 dark:bg-zinc-700 " : "hidden"} 
+                    <div className={`${isMenuModalVisible ? "mt-20  w-3/4  fixed h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg  font-semibold text-gray-400 dark:bg-zinc-700 sm:dark:bg-zinc-800 sm:flex sm:flex-col  " : "hidden "} 
                      sm:w-60    
-                    sm:bg-green-100 
+                  
                     sm:top-28 sm:left-0
                      sm:absolute sm:h-[calc(100vh-8rem)] sm:rounded-none sm:mt-0 sm:pt-0 sm:pb-0
-                    ` }  ref={ref} >
+
+                   
+                    
+
+                  `}  ref={ref} >
 
 
 
@@ -115,7 +119,7 @@ export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}
 
                         {/* darkmode switch */}
                         {/*credit to https://www.w3schools.com/howto/howto_css_switch.asp */ }
-                        <div className={`flex bg-gray-100 dark:bg-zinc-800 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2  ${size.width > 640 ? 'mt-10': ''}` }>
+                        <div className={`flex bg-gray-200 dark:bg-zinc-800 sm:dark:bg-zinc-900 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2 sm:mt-auto ${size.width > 640 ? 'mt-10': ''}` }>
                             <img src={ iconLightTheme} alt="" className='h-4'/>
                                 
                             {/* <!-- Rounded switch --> */}
@@ -149,9 +153,9 @@ export default function MenuDropdown({isMenuModalVisible, setIsMenuModalVisible}
 
             {/* show sidebar */}                
           {/* bg-indigo-500 p-4 pr-8 pl-8 rounded-tr-full rounded-br-full cursor-pointer mb-10  */}
-                    {!isMenuModalVisible && size.width > 640 && <div onClick={() => setIsMenuModalVisible(true)} className='bg-indigo-500 p-4 pr-6 rounded-tr-full rounded-br-full cursor-pointer mb-10 flex justify-center items-center min-w-max absolute bottom-20'>
+                    {!isMenuModalVisible && size.width > 640 && <div onClick={() => setIsMenuModalVisible(true)} className='bg-indigo-500 p-2 pr-3 pl-3 rounded-tr-full rounded-br-full cursor-pointer  flex justify-center items-center min-w-max absolute bottom-8'>
                        
-                       <img src={iconShowSidbar} alt="" className='w-10'/>  
+                       <img src={iconShowSidbar} alt="" className='w-5'/>  
                      </div>}
                     
 

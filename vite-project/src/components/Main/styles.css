@@ -251,5 +251,5 @@ input:checked + .slider:before {
 /* https://scottspence.com/posts/change-scrollbar-color-tailwind-css */
 :root {
   /* --primary: rgb(133, 131, 139); */
-  --secondary: rgb(125, 129, 134);
+  --secondary: rgb(163, 164, 167);
 }

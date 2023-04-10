@@ -9,7 +9,7 @@ export default function Column({column, index}) {
       if(index % 2 === 0) {
         return 'bg-cyan-400'
       } else if (index % 2 === 1) {
-        return 'bg-violet-500'
+        return 'bg-violet-500' 
       
     }}
 

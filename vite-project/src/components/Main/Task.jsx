@@ -27,8 +27,8 @@ export function Task({task, index}) {
             {/* Task Card */}
               <div 
                 onClick={() => setIsTaskModalVisible(true) } 
-                className="cursor-pointer dark:bg-zinc-800 flex flex-col my-3 bg-gray-50 shadow-md p-3 h-40 w-60 rounded-lg ">
-                  <p className='text-gray-900 font-bold py-2 dark:text-zinc-200 '>{task.title}</p>
+                className="cursor-pointer dark:bg-zinc-800 hover:dark:bg-zinc-700 flex flex-col my-3 bg-gray-50 hover:bg-gray-100 shadow-md p-3 h-40 w-60 rounded-lg hover:shadow-lg">
+                  <p className='text-gray-900 font-bold py-2 dark:text-zinc-200  '>{task.title}</p>
                   <p className='text-gray-400 font-bold text-xs py-2 '>{`${numCompletedSubtasks} of ${task.subtasks.length} subtasks`}</p>
               </div>
 

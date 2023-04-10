@@ -8,13 +8,16 @@ function App() {
 
   const [isMenuModalVisible, setIsMenuModalVisible] = useState(false)
   
+
   return (
     <div className='  flex flex-col h-screen '>
       <ContextProvider>
         <Header isMenuModalVisible={isMenuModalVisible}
-                    setIsMenuModalVisible={setIsMenuModalVisible}/>
+                    setIsMenuModalVisible={setIsMenuModalVisible}
+                    />
         <Main isMenuModalVisible={isMenuModalVisible}
-                    setIsMenuModalVisible={setIsMenuModalVisible}/>
+                    setIsMenuModalVisible={setIsMenuModalVisible}
+                    />
       </ContextProvider>  
     </div>
   )

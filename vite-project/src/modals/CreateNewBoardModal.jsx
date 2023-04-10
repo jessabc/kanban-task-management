@@ -88,10 +88,10 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
         
     //    overlay
         <div className={`${isCreateNewBoardModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50' : ''}`}>
-
+ 
 {/* mt-20  w-3/4 h-1/2 bg-indigo-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg overflow-hidden font-semibold text-indigo-600" : "hidden" */}
 
-        <div className={`${isCreateNewBoardModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col dark:bg-zinc-700  `  }  ref={ref}>
+        <div className={`${isCreateNewBoardModalVisible ? "  w-3/4   sm:w-1/2 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col dark:bg-zinc-700  `  }  ref={ref}>
 
             <button onClick={()=>setIsCreateNewBoardModalVisible(false)} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
 

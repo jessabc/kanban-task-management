@@ -71,17 +71,17 @@ export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddN
 
 
     return (
+// overlay
+        <div className={`${isAddNewColumnModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600   flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50 ' : ''}`}>
 
-        <div className={`${isAddNewColumnModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600   flex items-start justify-center ' : ''}`}>
-
-<div className={`${isAddNewColumnModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  }  ref={ref}>
+<div className={`${isAddNewColumnModalVisible ? "  w-3/4 sm:w-1/2  h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto dark:bg-zinc-700`  }  ref={ref}>
             
             {/* <button onClick={setIsEditBoardModalVisible}>x</button> */}
 
             <button onClick={() => setIsAddNewColumnModalVisible(false)} className='ml-auto text-2xl bg-gray-200   p-2 rounded-md mt-1 mr-1'><img src={iconCross} alt="" /></button>
             
             <div className=" m-5">
-            <p className="font-semibold text-lg text-gray-900 mb-5">Add New Column</p>
+            <p className="font-semibold text-lg text-gray-900 mb-5 dark:text-zinc-100">Add New Column</p>
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col '>
            
@@ -108,7 +108,7 @@ export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddN
                     type="button"
                     onClick={() => {
                         append({id: '', name: '', tasks:[]});
-                    }} className='text-indigo-500 bg-gray-200 rounded-full py-2 my-2 mt-3 w-full font-semibold'
+                    }} className='text-indigo-500 bg-gray-200 rounded-full py-2 my-2 mt-3 w-full font-semibold '
                 >
                     +Add New Column
                 </button>

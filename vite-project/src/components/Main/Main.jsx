@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import NewColumn from "./NewColumn";
 // import Menu from "./Menu";
 import useWindowSize from "../../hooks/useWindowSize";
-import MenuDropdown from "../../modals/MenuDropdown";
+import Menu from "../../modals/Menu";
 
 export default function Main({isMenuModalVisible, setIsMenuModalVisible}) {
     
@@ -137,15 +137,16 @@ const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 2}`
 
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className={`flex  gap-5   pl-5 pr-10 flex-1 w-screen bg-zinc-100 dark:bg-zinc-900 sm:pl-0 overflow-y-auto h-screen ${isMenuModalVisible ? 'sm:pr-20 sm:pl-56 sm:bg-yellow-200':'sm:pr-0 sm:pl-0 '  }`}>
+        <div className={`flex  gap-5   pl-5 pr-10 flex-1 w-screen bg-gray-200 dark:bg-zinc-900 sm:pl-0 overflow-y-auto h-screen ${isMenuModalVisible ? 'sm:pr-20 sm:pl-60 ':'sm:pr-0 sm:pl-0 '  }`}>
         
              {/* {size.width > 640 && <Menu/>} */}
         
              <div className='flex flex-col mt-auto '>
-                    <MenuDropdown 
+                    <Menu 
                     isMenuModalVisible={isMenuModalVisible}
                     setIsMenuModalVisible={setIsMenuModalVisible}
-                    boards={boards} />
+                    boards={boards} 
+                    />
                 </div>
 
             {columnElements} 

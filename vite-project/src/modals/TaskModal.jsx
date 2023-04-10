@@ -108,9 +108,9 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
     return (
       <>
       {/* // overlay */}
-      <div className={`${isTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center ' : ''}`}>
+      <div className={`${isTaskModalVisible ? ' fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50' : ''}`}>
 
-         <div className={`${isTaskModalVisible ? "  w-3/4 h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto`  } ref={ref} >
+         <div className={`${isTaskModalVisible ? "  w-3/4 sm:w-1/2  h-screen bg-gray-50 shadow-md    rounded-lg text-sm text-gray-400" : "hidden"} flex flex-col  overflow-y-auto dark:bg-zinc-700`  } ref={ref} >
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col ' >
               
@@ -125,7 +125,7 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
          <div className="m-10">
 
             <div className="flex ">
-              <p className="font-semibold text-lg text-gray-900 mb-5">{task.title}</p> 
+              <p className="font-semibold text-lg text-gray-900 mb-5 dark:text-zinc-100">{task.title}</p> 
               
               {/* edit/delete task button -*/}
               <div className="ml-auto">

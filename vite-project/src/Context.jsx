@@ -16,7 +16,7 @@ export function ContextProvider({children}) {
   
   const [currentBoardData, setCurrentBoardData] = useState({})
 
- 
+  const [theme, setTheme] = useState('light')
 
   //local storage
   // useEffect(() => {
@@ -59,7 +59,7 @@ export function ContextProvider({children}) {
 
 
   return (
-      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData}}>
+      <Context.Provider value={{boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData, theme, setTheme}}>
         {children}
       </Context.Provider>
   )

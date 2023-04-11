@@ -6,8 +6,8 @@ export const Context = createContext()
 
 export function ContextProvider({children}) {
 
+  // local storage:
   //credit to https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
-
   //credit to https://upmostly.com/tutorials/how-to-add-local-storage-to-your-react-apps  
 
   const [boards, setBoards] = useState(JSON.parse(localStorage.getItem('boards'))) 
@@ -40,22 +40,15 @@ export function ContextProvider({children}) {
   useEffect(() => {
     if(!boards) {
       fetch("./data.json")
-      .then(res => res.json())
-      .then(data => {
-
-        setBoards(data.boards)
-       
-        setCurrentBoardName(data.boards[0]?.name)
-          })
-        //  setCurrentBoardName(data?.boards[0]?.name)
+        .then(res => res.json())
+        .then(data => {
+          setBoards(data.boards)
+          setCurrentBoardName(data.boards[0]?.name)
+        })
     } else {
       setCurrentBoardName(boards[0]?.name)
     }
   }, [])
-
-  
-
-
 
 
   return (

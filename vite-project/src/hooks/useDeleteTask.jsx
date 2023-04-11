@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import {Context} from '../Context'
 
-export function useDeleteTask({task}) {
+export function useDeleteTask() {
    
-    const {boards, setBoards, currentBoardName,  setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+    const {boards, setBoards, currentBoardName, currentBoardData} = useContext(Context)
 
     function deleteTask(task) {
 
@@ -28,9 +28,6 @@ export function useDeleteTask({task}) {
     }
 
     return [deleteTask]
-    
-  
 }  
 
 
-// setCurrentBoardData(boards.find(board => board.name === currentBoardName))

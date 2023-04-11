@@ -1,28 +1,27 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from 'react'
 import { Context } from '../../Context'
-import Column from './Column'
-import "./styles.css";
 import { DragDropContext } from 'react-beautiful-dnd'
-import NewColumn from "./NewColumn";
-// import Menu from "./Menu";
-import useWindowSize from "../../hooks/useWindowSize";
-import Menu from "../../modals/Menu";
+import Column from './Column'
+import NewColumn from './NewColumn'
+import Menu from '../../modals/Menu'
+import { useWindowSize } from '../../hooks/useWindowSize';
+import './styles.css'
+
 
 export default function Main({isMenuModalVisible, setIsMenuModalVisible}) {
     
   const [columns, setColumns] = useState([])
-  //   console.log(columns)
 
-  const {boards, setBoards, currentBoardName, setCurrentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+  const {boards, setBoards, currentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
+
+  const size = useWindowSize()
+
+  const columnElements = currentBoardData?.columns?.map((column, index) => <Column key={column.name} column={column} index={index}/>)
 
   useEffect(() => {
     setColumns(currentBoardData?.columns)
   },[currentBoardData])
 
-  const columnElements = currentBoardData?.columns?.map((column, index) => <Column key={column.name} column={column} index={index}/>)
-
-
-  const size = useWindowSize();
 
   //credit to https://dev.to/imjoshellis/codealong-multi-column-drag-and-drop-in-react-3781
   const onDragEnd = ({ source, destination }) => {
@@ -130,28 +129,26 @@ export default function Main({isMenuModalVisible, setIsMenuModalVisible}) {
   }
 
 
-const numOfCols = `grid-cols-${ currentBoardData?.columns?.length + 2}`
-// grid ${numOfCols}
-
-
-
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className={`flex  gap-5   pl-5 pr-10 flex-1 w-screen bg-gray-200 dark:bg-zinc-900 sm:pl-0 overflow-y-auto h-screen ${isMenuModalVisible ? 'sm:pr-20 sm:pl-60 ':'sm:pr-0 sm:pl-0 '  }`}>
         
-             {/* {size.width > 640 && <Menu/>} */}
+        {/* sticky header credit to https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik */}
+        <div className={`flex gap-5 pl-5 pr-10 flex-1 w-screen bg-gray-200 dark:bg-zinc-900 sm:pl-0 overflow-y-auto h-screen ${isMenuModalVisible ? 'sm:pr-20 sm:pl-60 ':'sm:pr-0 sm:pl-0'}`}>
         
-             <div className='flex flex-col mt-auto '>
-                    <Menu 
-                    isMenuModalVisible={isMenuModalVisible}
-                    setIsMenuModalVisible={setIsMenuModalVisible}
-                    boards={boards} 
-                    />
-                </div>
+          <div className='flex flex-col mt-auto'>
+            <Menu 
+            isMenuModalVisible={isMenuModalVisible}
+            setIsMenuModalVisible={setIsMenuModalVisible}
+            boards={boards} 
+            />
+          </div>
 
-            {columnElements} 
-            <NewColumn/>
+          {columnElements} 
+
+          <NewColumn/>
+
         </div>
+        
       </DragDropContext>
   )
 }

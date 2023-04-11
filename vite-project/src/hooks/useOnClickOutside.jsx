@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-
-
-
 // credit to https://usehooks.com/useOnClickOutside/
+
+import { useEffect } from "react";
+
+
 export function useOnClickOutside(ref, handler) {
+  
     useEffect(
       () => {
         const listener = (event) => {

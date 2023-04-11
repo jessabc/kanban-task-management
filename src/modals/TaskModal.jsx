@@ -36,7 +36,7 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
       register,
       control,
       handleSubmit,
-    } = useForm()
+    } = useForm() 
 
   function onSubmit(data)  {
     // update subtasks array with un/completed subtasks

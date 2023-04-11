@@ -5,16 +5,18 @@ import iconCross from '../assets/icon-cross.svg'
 
 export default function DeleteBoardModal({isDeleteBoardModalVisible, setIsDeleteBoardModalVisible}) {
 
-  const {setBoards, currentBoardName} = useContext(Context)
+  const {boards, setBoards, currentBoardName, setCurrentBoardName} = useContext(Context)
   
   const ref = useRef()
   useOnClickOutside(ref, () => setIsDeleteBoardModalVisible(false));
-   
+   console.log(currentBoardName)
   function deleteBoard() {
     // sets new boards array removing current board
     setBoards(prev => prev.filter(board => board.name != currentBoardName)) 
     // closes modal
     setIsDeleteBoardModalVisible(false)
+
+    setCurrentBoardName(null) 
   }
     
   return (

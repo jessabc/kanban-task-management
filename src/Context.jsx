@@ -29,6 +29,12 @@ export function ContextProvider({children}) {
   // set the current board
   useEffect(() => {
     setCurrentBoardData(boards?.find(board => board.name === currentBoardName))
+
+    if(!currentBoardName) {
+      if(boards) {
+        setCurrentBoardName(boards[0]?.name)
+      }
+    }
   },[boards])
     
   // on first time using app ie nothing in local storage, fetch boards

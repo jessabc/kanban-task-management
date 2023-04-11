@@ -11,7 +11,7 @@ export default function DeleteTaskModal({isDeleteTaskModalVisible, setIsDeleteTa
         setIsTaskModalVisible(false)
     })
 
-    const [deleteTask] = useDeleteTask(task)
+    const [deleteTask] = useDeleteTask()
 
     function  handleClick(e, task) {
         if(e.target.id === 'delete') {

@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import {Context} from '../Context'
 
 export function useDeleteTask() {
-   
+    
     const {boards, setBoards, currentBoardName, currentBoardData} = useContext(Context)
 
     function deleteTask(task) {
@@ -19,12 +19,12 @@ export function useDeleteTask() {
 
         // replace old column with updated column in current board
         const updatedCurrentBoardData = currentBoardData.columns.map(column => column.name === currentTask.status ? thisUpdatedColumn : column)
-
+      
         // update boards with updated current board data
         const updatedBoards = boards.map(board => board.name === currentBoardName ? {...board, columns: updatedCurrentBoardData }: board)
 
         setBoards(updatedBoards)
-        // setBoards(prev => prev.filter(board => board.name != currentBoardName)) 
+
     }
 
     return [deleteTask]

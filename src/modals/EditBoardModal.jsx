@@ -8,7 +8,7 @@ import iconCross from '../assets/icon-cross.svg'
 export default function EditBoardModal({setIsEditBoardModalVisible, isEditBoardModalVisible}) {
 
     let {setBoards, currentBoardName, setCurrentBoardName, currentBoardData} = useContext(Context)
-console.log(currentBoardName)
+    
     const ref = useRef()
     useOnClickOutside(ref, () => setIsEditBoardModalVisible(false))
 

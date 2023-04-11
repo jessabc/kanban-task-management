@@ -4,11 +4,13 @@ import { useOnClickOutside } from '../hooks/useOnClickOutside'
  
 
 export default function EditOrDeleteTaskModal({task, isEditDeleteTaskModalVisible, setIsEditDeleteTaskModalVisible, setIsTaskModalVisible, setIsEditTaskModalVisible}) {
-   
+
   const [isDeleteTaskModalVisible, setIsDeleteTaskModalVisible] = useState(false)
 
   const ref = useRef()
-  useOnClickOutside(ref, () => {setIsEditDeleteTaskModalVisible(false)})
+  useOnClickOutside(ref, () => {setIsEditDeleteTaskModalVisible(false)
+   
+  })
 
   function handleClick(e) {
     if(e.target.id === 'editTask') {
@@ -18,8 +20,8 @@ export default function EditOrDeleteTaskModal({task, isEditDeleteTaskModalVisibl
     }
     setIsEditDeleteTaskModalVisible(false)   
   }
-     
 
+  
     return (
       <div className='sm:relative'>
         {/* overlay */}
@@ -28,6 +30,7 @@ export default function EditOrDeleteTaskModal({task, isEditDeleteTaskModalVisibl
           <div className={`${isEditDeleteTaskModalVisible ? 'flex flex-col absolute right-20 top-28 sm:right-80 w-fit py-5 pl-5 pr-10  text-lg bg-gray-50 shadow-md gap-1 rounded-lg text-gray-400 dark:bg-zinc-700' : 'hidden'}`} ref={ref}>
 
             <button 
+              type='button'
               id='editTask' 
               onClick={(e) => handleClick(e)} 
               className='text-left hover:text-gray-300'>
@@ -35,14 +38,14 @@ export default function EditOrDeleteTaskModal({task, isEditDeleteTaskModalVisibl
             </button>
 
             <button 
-            id='deleteTask' 
-            onClick={(e) => handleClick(e)} 
-            className='text-red-400 hover:text-red-300'>
+              type='button'
+              id='deleteTask' 
+              onClick={(e) => handleClick(e)} 
+              className='text-red-400 hover:text-red-300'>
               Delete Task
             </button>
 
           </div>
-
         </div>
 
         {isDeleteTaskModalVisible && 

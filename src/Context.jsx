@@ -19,12 +19,12 @@ export function ContextProvider({children}) {
   const [theme, setTheme] = useState('light')
 
   //local storage
-  // useEffect(() => {
-  //   if(boards) {
-  //     localStorage.setItem('boards', JSON.stringify(boards));
-  //   // console.log('stored')
-  //   }
-  // }, [boards]);
+  useEffect(() => {
+    if(boards) {
+      localStorage.setItem('boards', JSON.stringify(boards));
+    // console.log('stored')
+    }
+  }, [boards]);
 
   // set the current board
   useEffect(() => {

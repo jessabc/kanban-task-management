@@ -57,10 +57,11 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
         <>
             {/* sliding menu, credit to https://dev.to/fayaz/making-a-navigation-drawer-sliding-sidebar-with-tailwindcss-blueprint-581l */}
             <nav
-            className="sm:flex sm:fixed sm:w-full sm:items-center sm:justify-between sm:px-6 sm:h-16 sm:z-10">
+            className="sm:flex sm:fixed sm:w-full sm:items-center sm:justify-between  sm:z-10">
         
                 <aside
-                    className={`sm:transform sm:top-28 sm:left-0 sm:w-60 sm:bg-gray-50 sm:fixed sm:h-screen  sm:ease-in-out sm:transition-all sm:duration-300 sm:z-30 ${isMenuModalVisible ? 'sm:translate-x-0' : 'sm:-translate-x-full'}`}>
+                    className={`sm:transform sm:top-24 sm:left-0 sm:w-60 sm:bg-gray-50
+                    sm:dark:bg-zinc-800 sm:fixed sm:h-screen  sm:ease-in-out sm:transition-all sm:duration-300 sm:z-30 ${isMenuModalVisible ? 'sm:translate-x-0' : 'sm:-translate-x-full'}`}>
 
                     {/* menu */}
                     <div className={`flex flex-col`} >
@@ -69,7 +70,7 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
                         <div className={`${isMenuModalVisible && size.width < 640? 'fixed top-0 left-0 w-screen h-screen bg-opacity-50 flex bg-gray-600 dark:bg-gray-900 dark:bg-opacity-50  items-start justify-center ' : ''}`}>
                         
                             {/* menu dropdown modal*/}
-                            <div className={`${isMenuModalVisible ? 'mt-20  w-3/4  fixed h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg  font-semibold text-gray-400 dark:bg-zinc-700 sm:dark:bg-zinc-800 sm:flex sm:flex-col' : 'hidden'}  sm:w-60 sm:top-7 sm:left-0 sm:absolute sm:h-[calc(100vh-10rem)] sm:rounded-none sm:mt-0 sm:pt-0 sm:pb-0`} ref={ref}>
+                            <div className={`${isMenuModalVisible ? 'mt-20  w-3/4  fixed h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg  font-semibold text-gray-400 dark:bg-zinc-700 sm:dark:bg-zinc-800 sm:flex sm:flex-col' : 'hidden'}  sm:w-60 sm:top-9 sm:left-0 sm:absolute sm:h-[calc(100vh-8rem)] sm:rounded-none sm:mt-0 sm:pt-0 sm:pb-0`} ref={ref}>
 
                                 {/* nubmer of boards */}
                                 <p className={`pl-5 text-xs tracking-widest mb-4 ${size.width > 640 ? 'pt-5 pb-3': ''}`}>
@@ -128,7 +129,7 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
             {!isMenuModalVisible && size.width > 640 && 
             <div 
                 onClick={() => setIsMenuModalVisible(true)} 
-                className='bg-indigo-500 p-2 pr-3 pl-3 rounded-tr-full rounded-br-full cursor-pointer  flex justify-center items-center min-w-max absolute bottom-8'
+                className='bg-indigo-500 p-2 pr-3 pl-3 rounded-tr-full rounded-br-full cursor-pointer  flex justify-center items-center min-w-max absolute bottom-5'
             >
                 <img src={iconShowSidbar} alt='' className='w-5'/>  
             </div>}

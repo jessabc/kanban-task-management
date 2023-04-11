@@ -28,13 +28,13 @@ export default function Header({isMenuModalVisible, setIsMenuModalVisible}) {
 
             {/* desktop logo */}
             {size.width > 640 && 
-            <div className='flex items-center w-2/5 h-full pl-5 dark:bg-zinc-800'>
+            <div className='flex items-center w-80  h-full pl-5 dark:bg-zinc-800'>
                 {theme === 'dark' ? 
                 <img src={logoDark} alt='' className=''/> 
                 : <img src={logoLight} alt='' className=''/>}
             </div>} 
               
-            <div className='flex w-full px-10 py-10 items-center dark:bg-zinc-800'>
+            <div className='flex w-full px-10 py-10 items-center dark:bg-zinc-800 sm:pl-0'>
 
                 {/* mobile logo */}
                 {size.width < 640 &&  

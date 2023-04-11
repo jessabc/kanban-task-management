@@ -11,8 +11,8 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
 
     const [updatedTaskData, setUpdatedTaskData] = useState()
 
-    let {boards, currentBoardData} = useContext(Context)
-
+    let {boards, currentBoardData, currentBoardName} = useContext(Context)
+    
     const [editTask] = useEditTask(task)
     const [deleteTask] = useDeleteTask(task)
 
@@ -67,7 +67,7 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
                 deleteTask(task)
             } else {
                 setIsEditTaskModalVisible(false)
-            setIsTaskModalVisible(false)
+                setIsTaskModalVisible(false)
             }
         } 
     }, [boards])
@@ -83,7 +83,7 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
         // overlay
         <div className={`${isEditTaskModalVisible ? 'fixed top-0 left-0 w-screen h-screen bg-opacity-50 bg-gray-600  flex items-start justify-center dark:bg-gray-900 dark:bg-opacity-50' : ''}`}>
 
-            <div className={`${isEditTaskModalVisible ? 'w-3/4 sm:w-1/2 h-screen bg-gray-50 shadow-md rounded-lg text-sm text-gray-400' : 'hidden'} flex flex-col  overflow-y-auto dark:bg-zinc-700`} ref={ref}>
+            <div className={`${isEditTaskModalVisible ? 'w-3/4 sm:w-1/2 h-screen bg-gray-50 shadow-md rounded-lg text-sm text-gray-400' : 'hidden'} flex flex-col  overflow-y-auto dark:bg-zinc-700}`} ref={ref}>
             
                 <button onClick={handleClick } className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
                     <img src={iconCross} alt='' />

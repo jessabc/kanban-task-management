@@ -82,10 +82,9 @@ Users should be able to:
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Website - [My Portfolio](https://app.netlify.com/sites/kaleidoscopic-speculoos-9506a0/overview)
 
 
 ## Acknowledgments
 
-I use this [live site solution](https://kanban-app-jay.netlify.app/) as inspiration.
+I used this [live site solution](https://kanban-app-jay.netlify.app/) as inspiration.

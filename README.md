@@ -47,7 +47,7 @@ Users should be able to:
 - Flexbox
 - Tailwind CSS
 - Mobile-first workflow
-- [React](https://reactjs.org/)
+- [React](https://reactjs.org/) - JS library
 - React Hook Form
 - React Beautiful DND
 - local storage
@@ -56,9 +56,9 @@ Users should be able to:
 ### What I learned
 
 - Using React Hook Form, and React Beautiful DND
-- custom hooks
-- clicking outside modal to close the modal
-- slide animation for menu
+- Custom hooks
+- Clicking outside modal to close the modal
+- Clide animation for menu
 
 ### Continued development
 
@@ -68,16 +68,16 @@ Users should be able to:
 
 ### Useful resources
 
-- [custom scroll](https://scottspence.com/posts/change-scrollbar-color-tailwind-css) 
-- [local storage, resource 1](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/) 
-- [local storage, resource 2](https://upmostly.com/tutorials/how-to-add-local-storage-to-your-react-apps)
-- [sticky header](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
-- [react hook form, resource 1](https://react-hook-form.com/api/usefieldarray/)
-- [react hook form, resource 2](https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js)
-- [react hook form, reset](https://www.react-hook-form.com/api/useform/reset/)
-- [reset checkboxes if close modal without submitting form ](https://codesandbox.io/s/react-hook-form-reset-v7-r7m5s)
-- [sliding menu](https://dev.to/fayaz/making-a-navigation-drawer-sliding-sidebar-with-tailwindcss-blueprint-581l)
-- [overlay](https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up)
+- [Custom scroll](https://scottspence.com/posts/change-scrollbar-color-tailwind-css) 
+- [Local storage, resource 1](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/) 
+- [Local storage, resource 2](https://upmostly.com/tutorials/how-to-add-local-storage-to-your-react-apps)
+- [Sticky header](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
+- [React hook form, resource 1](https://react-hook-form.com/api/usefieldarray/)
+- [React hook form, resource 2](https://codesandbox.io/s/react-hook-form-usefieldarray-rules-iyejbp?file=/src/index.js)
+- [React hook form, reset](https://www.react-hook-form.com/api/useform/reset/)
+- [Reset checkboxes if close modal without submitting form ](https://codesandbox.io/s/react-hook-form-reset-v7-r7m5s)
+- [Sliding menu](https://dev.to/fayaz/making-a-navigation-drawer-sliding-sidebar-with-tailwindcss-blueprint-581l)
+- [Overlay](https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up)
 
 
 ## Author

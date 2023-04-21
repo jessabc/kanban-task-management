@@ -4,7 +4,6 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import Column from './Column'
 import NewColumn from './NewColumn'
 import Menu from '../../modals/Menu'
-import { useWindowSize } from '../../hooks/useWindowSize';
 import './styles.css'
 
 
@@ -13,8 +12,6 @@ export default function Main({isMenuModalVisible, setIsMenuModalVisible}) {
   const [columns, setColumns] = useState([])
 
   const {boards, setBoards, currentBoardName, currentBoardData, setCurrentBoardData} = useContext(Context)
-
-  const size = useWindowSize()
 
   const columnElements = currentBoardData?.columns?.map((column, index) => <Column key={column.name} column={column} index={index}/>)
 

@@ -34,12 +34,12 @@ export default function DeleteTaskModal({isDeleteTaskModalVisible, setIsDeleteTa
                     id='exit' 
                     onClick={(e) => handleClick(e)} 
                     className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
-                        <img src={iconCross} alt='' />
+                        <img src={iconCross} alt='cross icon to close modal' />
                     </button>
 
                     <div className=' m-5'>
                         <p className='font-semibold text-lg text-red-500 mb-5'>Delete this task?</p>
-                        <p>Are you sure you want to delete the '{task.title}' board? This action will remove all columns and tasks and cannot be reversed.</p>
+                        <p>Are you sure you want to delete the '{task.title}' task and its subtasks? This action cannot be reversed.</p>
 
                         <div className='flex gap-2 mt-3'>
                             <button 

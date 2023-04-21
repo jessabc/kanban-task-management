@@ -67,7 +67,7 @@ export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddN
                     <button 
                     onClick={() => setIsAddNewColumnModalVisible(false)} 
                     className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
-                        <img src={iconCross} alt='' />
+                        <img src={iconCross} alt='cross icon to close modal' />
                     </button>
             
                     <div className=' m-5'>
@@ -92,7 +92,7 @@ export default function AddNewColumnModal({isAddNewColumnModalVisible, setIsAddN
                                             className='border-2 border-solid border-gray-300 rounded-sm py-1 my-1 text-gray-900 pl-2 outline-none focus:border-indigo-500 w-full mr-1'
                                         />
                                         <button type='button' onClick={() => remove(index)} className='cursor-pointer'>
-                                            <img src={iconCross} alt='' />
+                                            <img src={iconCross} alt='cross icon to close modal' />
                                         </button>
                                     </li>
                                 )})}

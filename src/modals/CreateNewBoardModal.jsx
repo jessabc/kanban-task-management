@@ -74,7 +74,7 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
                     <button 
                     onClick={()=>setIsCreateNewBoardModalVisible(false)} 
                     className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
-                        <img src={iconCross} alt='' />
+                        <img src={iconCross} alt='cross icon to close modal' />
                     </button>
 
                     <div className=' m-5'>
@@ -99,7 +99,7 @@ export default function CreateNewBoardModal({isCreateNewBoardModalVisible, setIs
                                             type='button' 
                                             onClick={() => remove(index)} 
                                             className='cursor-pointer'>
-                                                <img src={iconCross} alt='' />
+                                                <img src={iconCross} alt='cross icon to close modal' />
                                             </button>
                                         </li>
                                     )})}

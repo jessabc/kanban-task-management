@@ -86,7 +86,7 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
             <div className={`${isEditTaskModalVisible ? 'w-3/4 sm:w-1/2 h-screen bg-gray-50 shadow-md rounded-lg text-sm text-gray-400' : 'hidden'} flex flex-col  overflow-y-auto dark:bg-zinc-700}`} ref={ref}>
             
                 <button onClick={handleClick } className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
-                    <img src={iconCross} alt='' />
+                    <img src={iconCross} alt='cross icon to close modal' />
                 </button>
 
                 <div className=' m-5'>
@@ -122,7 +122,7 @@ export default function EditTaskModal({isEditTaskModalVisible, setIsEditTaskModa
                                     type='button' 
                                     onClick={() => remove(index)} 
                                     className='cursor-pointer'>
-                                        <img src={iconCross} alt='' />
+                                        <img src={iconCross} alt='cross icon to close modal' />
                                     </button>
                                 </li>
                             )})}

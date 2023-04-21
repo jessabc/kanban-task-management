@@ -90,7 +90,7 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col' >
               
               {/* credit to https://codesandbox.io/s/react-hook-form-reset-v7-r7m5s to reset checkboxes if close modal without submitting form */}
-              <button type='reset' onClick={handleClick} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'> <img src={iconCross} alt='' /></button>
+              <button type='reset' onClick={handleClick} className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'> <img src={iconCross} alt='cross to close modal' /></button>
               
               <div className='m-10'>
 
@@ -100,7 +100,7 @@ export default function TaskModal({setIsTaskModalVisible, isTaskModalVisible, ta
                   {/* edit/delete task button -*/}
                   <div className='ml-auto'>
                     <div onClick={() => setIsEditDeleteTaskModalVisible(prev => !prev)}>
-                      <img src={iconVerticalEllipsis} alt=''  className='cursor-pointer'/>
+                      <img src={iconVerticalEllipsis} alt='vertical ellipsis'  className='cursor-pointer'/>
                     </div>
                   </div>
 

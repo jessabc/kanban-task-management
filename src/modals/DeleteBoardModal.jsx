@@ -28,7 +28,7 @@ export default function DeleteBoardModal({isDeleteBoardModalVisible, setIsDelete
           <button 
             onClick={() => setIsDeleteBoardModalVisible(false)} 
             className='ml-auto text-2xl bg-gray-200 p-2 rounded-md mt-1 mr-1'>
-            <img src={iconCross} alt='' />
+            <img src={iconCross} alt='cross icon to close modal' />
           </button>
 
           <div className=' m-5'>

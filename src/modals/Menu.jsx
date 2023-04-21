@@ -73,7 +73,7 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
                             <div className={`${isMenuModalVisible ? 'mt-20  w-3/4  fixed h-content bg-gray-50 shadow-md  pt-5 pb-5 pr-5 rounded-lg  font-semibold text-gray-400 dark:bg-zinc-700 sm:dark:bg-zinc-800 sm:flex sm:flex-col' : 'hidden'}  sm:w-60 sm:top-0 sm:left-0 sm:absolute sm:h-[calc(100vh-7rem)] sm:rounded-none sm:mt-0 sm:pt-0 sm:pb-0`} ref={ref}>
 
                                 {/* nubmer of boards */}
-                                <p className={`pl-5 text-xs tracking-widest mb-4 ${size.width > 640 ? 'pt-5 pb-3': ''}`}>
+                                <p className={`pl-5 text-xs tracking-widest mb-4 sm:pt-5 sm:pb-3`}>
                                     {`ALL BOARDS (${boards?.length})`}
                                 </p>
 
@@ -82,7 +82,7 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
 
                                 {/* create new board link */}
                                 <div className='flex items-center'>
-                                    <img src={iconBoard} alt='' className='w-4 h-4 mr-2 ml-5'/>
+                                    <img src={iconBoard} alt='icon' className='w-4 h-4 mr-2 ml-5'/>
                                     <button 
                                         onClick={handleClick} 
                                         className='hover:text-gray-300 text-indigo-500'>
@@ -92,8 +92,8 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
 
                                 {/* darkmode switch */}
                                 {/*credit to https://www.w3schools.com/howto/howto_css_switch.asp */ }
-                                <div className={`flex bg-gray-200 dark:bg-zinc-800 sm:dark:bg-zinc-900 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2 sm:mt-auto ${size.width > 640 ? 'mt-10': ''}` }>
-                                    <img src={ iconLightTheme} alt='' className='h-4'/>
+                                <div className={`flex bg-gray-200 dark:bg-zinc-800 sm:dark:bg-zinc-900 mt-4 justify-center items-center gap-2 ml-7 mr-2 rounded-lg py-2 sm:mt-auto`}>
+                                    <img src={ iconLightTheme} alt='icon light theme' className='h-4'/>
                                     {/* <!-- Rounded switch --> */}
                                     <div>
                                         <label className='switch' >
@@ -101,18 +101,18 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
                                         <span className='slider round'></span>
                                         </label>
                                     </div>
-                                    <img src={iconDarkTheme} alt='' className='h-4' />
+                                    <img src={iconDarkTheme} alt='icon dark theme' className='h-4' />
                                 </div>
 
                                 {/* hide sidebar */}
-                                {size.width > 640 && 
+                                
                                 <div 
-                                    className='flex items-center gap-2  my-5 ml-5 cursor-pointer text-gray-500 text-sm' 
+                                    className='sm:flex sm:items-center sm:gap-2  sm:my-5 sm:ml-5 sm:cursor-pointer sm:text-gray-500 sm:text-sm hidden' 
                                     onClick={() => setIsMenuModalVisible(false)} 
                                 >
-                                    <img src={iconHideSidbar} alt='' className='w-4 h-4'/>
+                                    <img src={iconHideSidbar} alt='hide sidebar icon' className='w-4 h-4'/>
                                     <p className=''>Hide Sidebar</p>
-                                </div>}
+                                </div>
 
                             {/* end menu dropdown modal */}
                             </div>
@@ -126,12 +126,12 @@ export default function Menu({isMenuModalVisible, setIsMenuModalVisible}) {
             </nav>
 
             {/* show sidebar */}                
-            {!isMenuModalVisible && size.width > 640 && 
+            {!isMenuModalVisible && 
             <div 
                 onClick={() => setIsMenuModalVisible(true)} 
-                className='bg-indigo-500 p-2 pr-3 pl-3 rounded-tr-full rounded-br-full cursor-pointer  flex justify-center items-center min-w-max absolute bottom-5'
+                className='sm:bg-indigo-500 sm:p-2 sm:pr-3 sm:pl-3 sm:rounded-tr-full sm:rounded-br-full sm:cursor-pointer  sm:flex sm:justify-center sm:items-center sm:min-w-max sm:absolute sm:bottom-5 '
             >
-                <img src={iconShowSidbar} alt='' className='w-5'/>  
+                <img src={iconShowSidbar} alt='show sidebar icon' className='w-5'/>  
             </div>}
                 
             {/* create new board modal */}

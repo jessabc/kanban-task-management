@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/jessabc/kanban-task-management)
-- Live Site URL: [Kanban Task Management](https://legendary-mandazi-b84c8a.netlify.app)
+- Live Site URL: [Kanban Task Management](https://kanbantaskmanagement.netlify.app)
 
 
 ## My process
@@ -82,7 +82,7 @@ Users should be able to:
 
 ## Author
 
-- Website - [My Portfolio](https://app.netlify.com/sites/kaleidoscopic-speculoos-9506a0/overview)
+- Website - [My Portfolio](https://jessportfolio.netlify.app)
 
 
 ## Acknowledgments

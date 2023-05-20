@@ -87,4 +87,4 @@ Users should be able to:
 
 ## Acknowledgments
 
-I looked at many other live solution sites for inpiration.
+I looked at other live solution sites for inpiration, and this [live site solution](https://kanban-app-jay.netlify.app/) for animation inspiration.

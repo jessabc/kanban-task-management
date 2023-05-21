@@ -12,7 +12,6 @@ This is a solution to the [Kanban task management web app challenge on Frontend 
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
-- [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
 
@@ -78,11 +77,6 @@ Users should be able to:
 - [Reset checkboxes if close modal without submitting form ](https://codesandbox.io/s/react-hook-form-reset-v7-r7m5s)
 - [Sliding menu](https://dev.to/fayaz/making-a-navigation-drawer-sliding-sidebar-with-tailwindcss-blueprint-581l)
 - [Overlay](https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up)
-
-
-## Author
-
-- Website - [My Portfolio](https://jessportfolio.netlify.app)
 
 
 ## Acknowledgments
